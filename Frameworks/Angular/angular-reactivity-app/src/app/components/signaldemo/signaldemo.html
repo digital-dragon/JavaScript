@@ -1,0 +1,25 @@
+<h1>Cities</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Select City</th>
+        </tr>
+    </thead>
+    <tbody>
+        <td>
+            @for(city of cities; let i = $index; track city) {
+                <div>
+                    <input type="radio" id="i" name="city" value="city" (click)="updateCity(city)" [checked]="city === selectedCity"/>
+                    <label for="i">{{ city.name}}, {{city.state }}</label>
+                </div>
+            }
+        </td>
+
+    </tbody>
+
+    <div>No reactive section</div>
+    <div [style]="{ 'color': 'darkgray' }">Selected city is {{ selectedCity.name }} {{selectedCity.state}}</div>
+    <div>Reactive section(implemented using signals)</div>
+    <div [style]="{ 'color': 'darkred', 'font-weight' : 'bold' }">Selected city is {{ signalCity().name }} {{ signalCity().state }}</div>
+</table>
